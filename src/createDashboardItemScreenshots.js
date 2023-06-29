@@ -3,6 +3,7 @@ module.exports = async function createDashboardItemScreenshots(page, config) {
     const items = await page.$$('.react-grid-item:not(.PAGEBREAK)')
 
     for (const item of items) {
+        // const isMapsItem =
         fileNumber++
         const filePath = `artefacts/images/${config.dashboardId}_${config.jobId}_${fileNumber}.png`
         await item.screenshot({

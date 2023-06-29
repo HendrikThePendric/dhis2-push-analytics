@@ -7,7 +7,7 @@
     "license": "MIT",
     "private": false,
     "scripts": {
-        "excuteNodeScript": "node src/index.js",
+        "excuteNodeScript": "nodemon src/index.js",
         "clearArtefacts": "rm artefacts/images/* && rm artefacts/pdfs/* ",
         "generate": "npm run excuteNodeScript --base_url=https://debug.dhis2.org/dev --username=admin --password=district",
         "demo": "yarn clearArtefacts && yarn generate --dashboard_id=vqh4MBWOTi4 && yarn generate --dashboard_id=JW7RlN5xafN && yarn generate --dashboard_id=iMnYyBfSxmM"

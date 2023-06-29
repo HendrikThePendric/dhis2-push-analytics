@@ -10,10 +10,10 @@ async function init() {
     console.time('duration')
 
     const browser = await puppeteer.launch({
-        headless: 'new',
-        // headless: false,
-        // devtools: true,
-        defaultViewport: { width: 1280, height: 720 },
+        // headless: 'new',
+        headless: false,
+        devtools: true,
+        defaultViewport: { width: 1280, height: 1000 },
         args: ['--window-size=2560,2160', '--window-position=4000,0'],
     })
     const page = await browser.newPage()
@@ -25,9 +25,12 @@ async function init() {
     // This is far from perfect but investing too much time here seems pointless
     await adjustPageStyleForFileGeneration(page)
     await createDashboardItemScreenshots(page, config)
+    // There is an issue with the maps not loading in the print preview
+    // Because of this the PDF will contain a lot of images of spinners
+    // if the dashboard contains a lot of maps
     await createDashboardPdf(page, config)
 
-    await browser.close()
+    // await browser.close()
 
     console.timeEnd('duration')
 }
