@@ -1,0 +1,23 @@
+{
+    "name": "dhis2-push-analytics",
+    "version": "1.0.0",
+    "description": "POC of dashboard artifact generation using puppeteer",
+    "main": "src/index.js",
+    "author": "Hendrik de Graaf",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "excuteNodeScript": "node src/index.js",
+        "clearArtefacts": "rm artefacts/images/* && rm artefacts/pdfs/* ",
+        "generate": "npm run excuteNodeScript --base_url=https://debug.dhis2.org/dev --username=admin --password=district",
+        "demo": "yarn clearArtefacts && yarn generate --dashboard_id=vqh4MBWOTi4 && yarn generate --dashboard_id=JW7RlN5xafN && yarn generate --dashboard_id=iMnYyBfSxmM"
+    },
+    "dependencies": {
+        "puppeteer": "^20.7.2"
+    },
+    "devDependencies": {
+        "@dhis2/cli-style": "^10.5.1",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.8"
+    }
+}
